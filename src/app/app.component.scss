@@ -25,6 +25,9 @@
   width: 70%;
   overflow: hidden;
   word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .indicator{
   width: 30%;
@@ -43,14 +46,24 @@
   font-size: 26px;
   float: right;
 }
+.cancel {
+  font-size: 26px;
+
+}
 ::ng-deep span.mat-content{
   display: block;
 }
 .done-class{
   background-color: #E8F5E9;
+  .mat-expansion-panel-header {
+    background-color: #E8F5E9 !important;
+  }
 }
 .in-progress-class{
   background-color: #FFF3E0;
+  .mat-expansion-panel-header {
+    background-color: #FFF3E0 !important;
+  }
 }
 .pancakes{
   padding: 8px 0;
@@ -87,6 +100,9 @@
 
 .inprogress-chip{
   background-color: #FFCC80;
+}
+.red {
+  color: red;
 }
 
 
