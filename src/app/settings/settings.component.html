@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="main-content">
+    <div class="header">
+      <div class="title">
+        <h2>Beállítások</h2>
+        <button mat-flat-button color="primary" type="button" routerLink="/">
+          Rendelések
+        </button>
+      </div>
+    </div>
+    <h3>Palacsinták</h3>
+    <div *ngFor="let pancake of pancakes | async">
+      {{pancake.name}}
+    </div>
+  </div>
+</div>

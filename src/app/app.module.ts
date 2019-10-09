@@ -13,10 +13,20 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { SettingsComponent } from './settings/settings.component';
+import {RouterModule, Routes} from '@angular/router';
+import { OrdersComponent } from './orders/orders.component';
+
+const appRoutes: Routes = [
+  {path: 'settings', component: SettingsComponent},
+  {path: '**', component: OrdersComponent},
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SettingsComponent,
+    OrdersComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -26,10 +36,11 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatDividerModule,
     MatExpansionModule,
     MatIconModule,
-    MatChipsModule
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

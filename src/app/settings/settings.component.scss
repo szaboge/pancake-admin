@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+
+.main-content {
+  max-width: 31.250rem;
+  width: 100%;
+
+  .header {
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
