@@ -15,4 +15,9 @@
       align-items: center;
     }
   }
+
+  .pancakes-container {
+    display: flex;
+    flex-direction: column;
+  }
 }

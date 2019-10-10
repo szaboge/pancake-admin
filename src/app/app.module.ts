@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SettingsComponent } from './settings/settings.component';
 import {RouterModule, Routes} from '@angular/router';
 import { OrdersComponent } from './orders/orders.component';
+import { PancakeComponent } from './settings/pancake/pancake.component';
 
 const appRoutes: Routes = [
   {path: 'settings', component: SettingsComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SettingsComponent,
-    OrdersComponent
+    OrdersComponent,
+    PancakeComponent
   ],
   imports: [
     AngularFireAuthModule,

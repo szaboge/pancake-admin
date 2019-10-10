@@ -9,8 +9,8 @@
       </div>
     </div>
     <h3>Palacsinták</h3>
-    <div *ngFor="let pancake of pancakes | async">
-      {{pancake.name}}
+    <div class="pancakes-container">
+      <app-pancake [pancake]="pancake" *ngFor="let pancake of pancakes | async"></app-pancake>
     </div>
   </div>
 </div>

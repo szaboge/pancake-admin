@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Observable, Subject, Subscription} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {AuthService} from '../auth/auth.service';
 
-interface Pancake {
+export interface Pancake {
   name: string;
   piece: number;
 }

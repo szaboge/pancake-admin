@@ -1,0 +1,16 @@
+<mat-card class="container">
+  <ng-container *ngTemplateOutlet="normal; context: {$implicit: _pancake | async}"></ng-container>
+</mat-card>
+
+
+<ng-template #normal let-pancake>
+  <span>{{pancake?.name}}</span>
+  <div>
+    <button mat-icon-button>
+      <span class="mdi mdi-pencil mdi-24px"></span>
+    </button>
+    <button mat-icon-button color="warn">
+      <span class="mdi mdi-close mdi-24px"></span>
+    </button>
+  </div>
+</ng-template>
