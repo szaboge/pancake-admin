@@ -14,7 +14,7 @@ export class AuthService {
     return this.auth;
   }
 
-  db() {
+  db(): AngularFireDatabase {
     return this.datab;
   }
 }

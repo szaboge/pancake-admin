@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Subject, Subscription} from 'rxjs';
+import {BehaviorSubject, Subject, Subscription} from 'rxjs';
 import {AuthService} from '../auth/auth.service';
+import {FormControl, Validators} from '@angular/forms';
 
 export interface Pancake {
   name: string;
@@ -14,10 +15,11 @@ export interface Pancake {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent implements OnInit {
-
+  pancakeFormControl = new FormControl('', Validators.required);
   authSub: Subscription;
+  disabled = false;
 
-  pancakes = new Subject<Array<Pancake>>();
+  pancakes = new BehaviorSubject<Array<Pancake>>([]);
 
   constructor(public authService: AuthService) {
   }
@@ -27,14 +29,27 @@ export class SettingsComponent implements OnInit {
         if (next) {
           this.authService.db().object('pancakes').valueChanges()
             .subscribe((pancakes: Array<Pancake>) => {
-              this.pancakes.next(pancakes);
+              this.pancakes.next(pancakes ? pancakes : []);
             });
         } else {
           this.authService.af().auth.signInAnonymously();
         }
       }
     );
+  }
 
+  addPancake() {
+    if (this.pancakeFormControl.valid) {
+      this.pancakes.next([...this.pancakes.getValue(), {name: this.pancakeFormControl.value, piece: 0}]);
+      this.pancakeFormControl.setValue('');
+      this.pancakeFormControl.markAsUntouched();
+      this.authService.db().object('pancakes').set(this.pancakes.getValue())
+        .then(value => {
 
+        })
+        .catch(reason => {
+          console.log(reason);
+        });
+    }
   }
 }

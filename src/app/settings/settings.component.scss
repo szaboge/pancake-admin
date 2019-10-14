@@ -20,4 +20,13 @@
     display: flex;
     flex-direction: column;
   }
+
+  .add-pancake-container {
+    display: flex;
+    align-items: center;
+    .add-pancake-input {
+      flex: 1;
+      margin-right: 10px;
+    }
+  }
 }

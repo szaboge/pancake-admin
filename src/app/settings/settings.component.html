@@ -12,5 +12,13 @@
     <div class="pancakes-container">
       <app-pancake [pancake]="pancake" *ngFor="let pancake of pancakes | async"></app-pancake>
     </div>
+    <div class="add-pancake-container">
+      <mat-form-field class="add-pancake-input">
+        <input [formControl]="pancakeFormControl" matInput placeholder="Palacsinta neve">
+      </mat-form-field>
+      <button [disabled]="!pancakeFormControl.valid" mat-flat-button color="primary" type="button" (click)="addPancake()">
+        Hozzáadás
+      </button>
+    </div>
   </div>
 </div>
