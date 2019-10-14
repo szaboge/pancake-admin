@@ -2,7 +2,7 @@
   <div class="main-content">
     <div class="header">
       <div class="title">
-        <h2>Beállítások</h2>
+        <h2>Beállítások <span *ngIf="(loading | async)" class="mdi mdi-loading mdi-spin loading-icon"></span></h2>
         <button mat-flat-button color="primary" type="button" routerLink="/">
           Rendelések
         </button>
@@ -10,14 +10,21 @@
     </div>
     <h3>Palacsinták</h3>
     <div class="pancakes-container">
-      <app-pancake [pancake]="pancake" *ngFor="let pancake of pancakes | async"></app-pancake>
+      <app-pancake [pancake]="pancake" (delete)="deletePancake($event)" [disabled]="loading | async" *ngFor="let pancake of pancakes | async">
+      </app-pancake>
     </div>
     <div class="add-pancake-container">
       <mat-form-field class="add-pancake-input">
         <input [formControl]="pancakeFormControl" matInput placeholder="Palacsinta neve">
       </mat-form-field>
-      <button [disabled]="!pancakeFormControl.valid" mat-flat-button color="primary" type="button" (click)="addPancake()">
+      <button [disabled]="!pancakeFormControl.valid || (loading | async)" mat-flat-button color="primary" type="button" (click)="addPancake()">
         Hozzáadás
+      </button>
+    </div>
+    <h3>Rendelések</h3>
+    <div class="delete-all-reservation">
+      <button [disabled]="(loading | async)" mat-flat-button color="warn" type="button" (click)="deleteReservations()">
+        Összes rendelés törlése
       </button>
     </div>
   </div>

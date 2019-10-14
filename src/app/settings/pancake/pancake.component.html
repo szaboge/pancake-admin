@@ -1,7 +1,7 @@
 <mat-card class="container">
   <span>{{pancake?.name}}</span>
   <div>
-    <button [disabled]="disabled" mat-icon-button color="warn">
+    <button [disabled]="disabled || !pancake" mat-icon-button color="warn" (click)="delete.emit(pancake?.name)">
       <span class="mdi mdi-close mdi-24px"></span>
     </button>
   </div>

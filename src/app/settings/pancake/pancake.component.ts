@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Pancake} from '../settings.component';
 
 @Component({
@@ -10,6 +10,8 @@ import {Pancake} from '../settings.component';
 export class PancakeComponent implements OnInit {
   @Input() pancake: Pancake;
   @Input() disabled = false;
+
+  @Output() delete = new EventEmitter<string>();
 
   constructor() { }
 
